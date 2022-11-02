@@ -1,7 +1,12 @@
+package factories;
+
+import models.ItemModel;
+import models.PlantModel;
+
 import java.util.HashMap;
 
 public class PlantDatabase {
-    public static HashMap<Integer, PlantModel> plantModeMap = new HashMap<>();
+    public static HashMap<Integer, PlantModel> plantModelMap = new HashMap<>();
     public static HashMap<Integer, ItemModel> itemModelMap = new HashMap<>();
 
     public static void initItemModels(){

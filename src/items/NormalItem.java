@@ -1,3 +1,10 @@
+package items;
+
+import enums.Quality;
+import enums.Rarity;
+import factories.PlantDatabase;
+import models.ItemModel;
+
 public class NormalItem {
     ItemModel itemModel;
     protected Rarity rarity;

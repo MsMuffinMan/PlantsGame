@@ -1,3 +1,14 @@
+package factories;
+
+import enums.ItemTypes;
+import enums.Quality;
+import enums.Rarity;
+import items.NormalItem;
+import items.PlantItem;
+import items.SeedItem;
+import models.ItemModel;
+
+
 public abstract class ItemFactory {
     private static SeedItem createSeedItem(int index, Quality quality){
         int seedIndex = index + 1; // Seed versions of the plant item will always immediately follow plant item

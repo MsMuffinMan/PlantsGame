@@ -1,3 +1,12 @@
+package src;
+
+import enums.ItemTypes;
+import enums.Quality;
+import factories.ItemFactory;
+import items.NormalItem;
+import items.PlantItem;
+import items.SeedItem;
+import models.PlantModel;
 
 public class Plant implements Growable{
 
@@ -29,8 +38,8 @@ public class Plant implements Growable{
 
     public NormalItem[] harvest(){
         // return an item of the plant and a seed based on the quality of the plant
-        //SeedItem harvestedSeed = ItemFactory.createSeedItem(plantModel.index(), quality);
-        //PlantItem harvestedPlant = ItemFactory.createPlantItem(plantModel.index(), quality);
+        //items.SeedItem harvestedSeed = factories.ItemFactory.createSeedItem(plantModel.index(), quality);
+        //items.PlantItem harvestedPlant = factories.ItemFactory.createPlantItem(plantModel.index(), quality);
         SeedItem harvestedSeed = (SeedItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.SEED);
         PlantItem harvestedPlant = (PlantItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.PLANT);
 
