@@ -10,18 +10,18 @@ import models.PlantModel;
 
 public class Plant implements Growable{
 
-    PlantModel plantModel;
-    private int growthStage;
-    protected int growthMultiplier;
-    protected int maxGrowthStage;
+    private final PlantModel plantModel;
+    public int growthStage;
+    public int growthMultiplier;
+    private final int maxGrowthStage;
     private boolean isFullyGrown;
     protected Quality quality;
 
     public Plant(PlantModel plantModel, Quality quality){
         this.plantModel = plantModel;
-        this.growthMultiplier = getGrowthMultiplier(quality);
+        this.growthMultiplier = calcGrowthMultiplier(quality);
         this.growthStage = 0;
-        this.maxGrowthStage = getMaxGrowthStage(quality);
+        this.maxGrowthStage = calcMaxGrowthStage(quality);
         this.isFullyGrown = false;
         this.quality = quality;
 
@@ -46,7 +46,7 @@ public class Plant implements Growable{
         return new NormalItem[]{harvestedSeed, harvestedPlant};
     }
 
-    public int getGrowthMultiplier(Quality quality){
+    public int calcGrowthMultiplier(Quality quality){
         int multiplier = -1;
         switch (quality){
             case POOR -> multiplier = 1;
@@ -57,7 +57,7 @@ public class Plant implements Growable{
         return multiplier;
     }
 
-    public int getMaxGrowthStage(Quality quality){
+    public int calcMaxGrowthStage(Quality quality){
         int maxStage = -1;
         switch (quality){
             case POOR -> maxStage = 7;

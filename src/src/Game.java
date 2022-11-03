@@ -1,8 +1,11 @@
 package src;
 
+import factories.PlantDatabase;
+
 public class Game {
     public static void main(String[] args) {
-        System.out.println("Testing");
+        PlantDatabase.initModels();
+
     }
 
     public static int run(){

@@ -8,6 +8,6 @@ public interface Growable {
 
     NormalItem[] harvest();
 
-    int getGrowthMultiplier(Quality quality);
-    int getMaxGrowthStage(Quality quality);
+    int calcGrowthMultiplier(Quality quality);
+    int calcMaxGrowthStage(Quality quality);
 }
