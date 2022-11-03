@@ -1,8 +1,11 @@
 package factories;
 
+import models.ItemModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -21,13 +24,12 @@ class PlantDatabaseTest {
     }
 
     @Test
-    void printEntrySet(){
-        if(PlantDatabase.plantModelMap.isEmpty()){
-            assertEquals(false, true);
-        } else {
-            System.out.println(PlantDatabase.plantModelMap.entrySet());
-        }
+    void getItemModelOutOfDatabase(){
+        int testIndex = 1;
+        ItemModel testItem =  PlantDatabase.itemModelMap.getOrDefault(testIndex, PlantDatabase.itemModelMap.get(0));
+        assertEquals(testIndex, testItem.index());
     }
+
 
     @Test
     void checkIfItemModelsMapIsFilledWithAnything(){

@@ -1,5 +1,6 @@
 package factories;
 
+import enums.ItemTypes;
 import models.ItemModel;
 import models.PlantModel;
 
@@ -27,11 +28,11 @@ public abstract class PlantDatabase {
         try {
             Files.lines(Path.of(basePath.concat("res/ItemModels.txt")))
                     .map(s -> s.split(","))
-                    .map(arr -> new String[]{arr[0].strip(), arr[1].strip(), arr[2].strip()})
-                    .map(arr -> new ItemModel(Integer.parseInt(arr[0]), arr[1], Integer.parseInt(arr[2])))
+                    .map(arr -> new String[]{arr[0].strip(), arr[1].strip(), arr[2].strip(), arr[3].strip()})
+                    .map(arr -> new ItemModel(Integer.parseInt(arr[0]), arr[1], Integer.parseInt(arr[2]), ItemTypes.valueOf(arr[3].toUpperCase())))
                     .forEach(k -> itemModelMap.put(k.index(), k));
         } catch (IOException e) {
-            System.out.println("Somethhing went wrong reading in the plant models file");
+            System.out.println("Something went wrong reading in the plant models file");
             //throw new RuntimeException(e);
         }
     }
@@ -46,8 +47,9 @@ public abstract class PlantDatabase {
                     .map(arr -> new PlantModel(Integer.parseInt(arr[0]), arr[1], Integer.parseInt(arr[2]), Integer.parseInt(arr[3])))
                     .forEach(k -> plantModelMap.put(k.index(), k));
         } catch (IOException e) {
-            System.out.println("Somethhing went wrong reading in the plant models file");
+            System.out.println("Something went wrong reading in the item models file");
             //throw new RuntimeException(e);
         }
     }
+
 }
