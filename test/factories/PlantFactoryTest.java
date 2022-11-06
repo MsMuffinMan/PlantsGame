@@ -12,6 +12,6 @@ class PlantFactoryTest {
     void createPlantFromSeedWithQualityNormal() {
         PlantDatabase.initModels();
         Plant testPlant = PlantFactory.createPlantFromSeed(2, Quality.NORMAL);
-        assertEquals(2, testPlant.growthMultiplier);
+        assertEquals(2, testPlant.getGrowthMultiplier());
     }
 }

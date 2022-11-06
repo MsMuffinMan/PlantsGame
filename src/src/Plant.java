@@ -8,15 +8,19 @@ import items.PlantItem;
 import items.SeedItem;
 import models.PlantModel;
 
-public class Plant implements Growable{
+public class Plant implements Growable, Harvestable, GrowthStatCalculator{
 
     private final PlantModel plantModel;
-    public int growthStage;
-    public int growthMultiplier;
+    private int growthStage;
+
+    private final int growthMultiplier;
     private final int maxGrowthStage;
     private boolean isFullyGrown;
     protected Quality quality;
 
+    public int getGrowthMultiplier() {
+        return growthMultiplier;
+    }
     public Plant(PlantModel plantModel, Quality quality){
         this.plantModel = plantModel;
         this.growthMultiplier = calcGrowthMultiplier(quality);
@@ -24,7 +28,6 @@ public class Plant implements Growable{
         this.maxGrowthStage = calcMaxGrowthStage(quality);
         this.isFullyGrown = false;
         this.quality = quality;
-
     }
 
     public void grow(){
@@ -38,10 +41,8 @@ public class Plant implements Growable{
 
     public NormalItem[] harvest(){
         // return an item of the plant and a seed based on the quality of the plant
-        //items.SeedItem harvestedSeed = factories.ItemFactory.createSeedItem(plantModel.index(), quality);
-        //items.PlantItem harvestedPlant = factories.ItemFactory.createPlantItem(plantModel.index(), quality);
-        SeedItem harvestedSeed = (SeedItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.SEED);
-        PlantItem harvestedPlant = (PlantItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.PLANT);
+        SeedItem harvestedSeed = (SeedItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.SEED, 1);
+        PlantItem harvestedPlant = (PlantItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.PLANT, 1);
 
         return new NormalItem[]{harvestedSeed, harvestedPlant};
     }

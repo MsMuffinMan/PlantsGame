@@ -36,4 +36,9 @@ class PlantDatabaseTest {
         assertFalse(PlantDatabase.itemModelMap.isEmpty());
     }
 
+    @Test
+    void checkIfFoodModelsMapIsFilledWithAnything() {
+        assertFalse(PlantDatabase.foodModelMap.isEmpty());
+    }
+
 }

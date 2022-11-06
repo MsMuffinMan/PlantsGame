@@ -27,7 +27,7 @@ public class Player implements PlayerActions {
     }
 
     public void pickUpItem(NormalItem groundItem) {
-        groundItem.pickUp(playerInventory);
+        playerInventory.addItem(groundItem);
     }
 
     public void dropItem(NormalItem itemToDrop) {

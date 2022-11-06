@@ -1,0 +1,6 @@
+Dummy Food, 1
+Pie, 1
+Cake, 1
+Muffin, 1
+Ambrosia, 1
+Carrot, 1
