@@ -10,8 +10,8 @@ class PlantFactoryTest {
 
     @Test
     void createPlantFromSeedWithQualityNormal() {
-        PlantDatabase.initModels();
-        Plant testPlant = PlantFactory.createPlantFromSeed(2, Quality.NORMAL);
+        Database.initModels();
+        Plant testPlant = PlantFactory.createPlantFromSeed("Carrot", Quality.NORMAL);
         assertEquals(2, testPlant.getGrowthMultiplier());
     }
 }

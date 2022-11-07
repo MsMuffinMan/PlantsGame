@@ -12,33 +12,31 @@ import models.ItemModel;
 
 
 public abstract class ItemFactory {
-    private static SeedItem createSeedItem(int index, Quality quality, int stackSize){
-        int seedIndex = index + 1; // Seed versions of the plant item will always immediately follow plant item
-        ItemModel templateSeed = PlantDatabase.itemModelMap.get(seedIndex);
+    private static SeedItem createSeedItem(String name, Quality quality, int stackSize){
+        String seedName = name.concat(" Seed"); // Seed versions of the plant item will always immediately follow plant item
+        ItemModel templateSeed = Database.itemModelMap.getOrDefault(seedName, Database.itemModelMap.get("Dummy Item"));
         return new SeedItem(templateSeed, Rarity.rollForRarity(quality), quality, stackSize);
     }
 
-    private static PlantItem createPlantItem(int index, Quality quality, int stackSize){
-        ItemModel templatePlant = PlantDatabase.itemModelMap.get(index);
+    private static PlantItem createPlantItem(String name, Quality quality, int stackSize){
+        ItemModel templatePlant = Database.itemModelMap.getOrDefault(name, Database.itemModelMap.get("Dummy Item"));
         return new PlantItem(templatePlant, Rarity.rollForRarity(quality), quality, stackSize);
     }
 
-    private static FoodItem createFoodItem(int index, Quality quality, int stackSize) {
-        ItemModel templateItem = PlantDatabase.itemModelMap.get(index);
-        String name = templateItem.name();
-        FoodModel dummyFood = PlantDatabase.foodModelMap.get("Dummy Food");
-        FoodModel templateFood = PlantDatabase.foodModelMap.getOrDefault(name, dummyFood);
+    private static FoodItem createFoodItem(String name, Quality quality, int stackSize) {
+        ItemModel templateItem = Database.itemModelMap.getOrDefault(name, Database.itemModelMap.get("Dummy Item"));
+        FoodModel templateFood = Database.foodModelMap.getOrDefault(name, Database.foodModelMap.get("Dummy Food"));
         return new FoodItem(templateItem, templateFood, quality, stackSize);
     }
     private static NormalItem createDummyItem(){
         return new NormalItem();
     }
 
-    public static NormalItem createItem(int index, Quality quality, ItemTypes type, int stackSize){
+    public static NormalItem createItem(ItemTypes type, String name, Quality quality, int stackSize){
         switch(type){
-            case SEED: return createSeedItem(index, quality, stackSize);
-            case PLANT: return createPlantItem(index, quality, stackSize);
-            case FOOD: return createFoodItem(index, quality, stackSize);
+            case SEED: return createSeedItem(name, quality, stackSize);
+            case PLANT: return createPlantItem(name, quality, stackSize);
+            case FOOD: return createFoodItem(name, quality, stackSize);
             default: return createDummyItem();
         }
     }

@@ -1,10 +1,10 @@
 package src;
 
-import factories.PlantDatabase;
+import factories.Database;
 
 public class Game {
     public static void main(String[] args) {
-        PlantDatabase.initModels();
+        Database.initModels();
     }
 
     public static int run(){

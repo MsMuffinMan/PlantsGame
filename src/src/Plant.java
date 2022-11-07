@@ -41,8 +41,8 @@ public class Plant implements Growable, Harvestable, GrowthStatCalculator{
 
     public NormalItem[] harvest(){
         // return an item of the plant and a seed based on the quality of the plant
-        SeedItem harvestedSeed = (SeedItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.SEED, 1);
-        PlantItem harvestedPlant = (PlantItem) ItemFactory.createItem(plantModel.index(), quality, ItemTypes.PLANT, 1);
+        SeedItem harvestedSeed = (SeedItem) ItemFactory.createItem(ItemTypes.SEED, plantModel.name(), quality, 1);
+        PlantItem harvestedPlant = (PlantItem) ItemFactory.createItem(ItemTypes.PLANT, plantModel.name(), quality, 1);
 
         return new NormalItem[]{harvestedSeed, harvestedPlant};
     }

@@ -14,7 +14,7 @@ public class PlantItem extends NormalItem {
     }
 
     public SeedItem convertToSeed(){
-        return (SeedItem) ItemFactory.createItem(itemModel.index(), quality, ItemTypes.SEED, 1);
+        return (SeedItem) ItemFactory.createItem(ItemTypes.SEED, itemModel.name(), quality, 1);
     }
 
 }

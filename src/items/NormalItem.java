@@ -2,7 +2,7 @@ package items;
 
 import enums.Quality;
 import enums.Rarity;
-import factories.PlantDatabase;
+import factories.Database;
 import models.ItemModel;
 
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class NormalItem extends Item {
     }
 
     public NormalItem(){
-        this.itemModel = PlantDatabase.itemModelMap.get(0); // Index 0 for error objects
+        this.itemModel = Database.itemModelMap.get(0); // Index 0 for error objects
         this.rarity = Rarity.COMMON ;
         this.quality = Quality.NORMAL;
     }

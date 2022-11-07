@@ -17,7 +17,7 @@ public class SeedItem extends NormalItem implements Plantable {
 
     public Plant plant(){
         //Create a plant object based on the quality of the seed
-        return PlantFactory.createPlantFromSeed(itemModel.index(), quality);
+        return PlantFactory.createPlantFromSeed(itemModel.name(), quality);
     }
 
     //a plant method should place a Plant in the world

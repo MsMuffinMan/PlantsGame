@@ -1,3 +1,3 @@
 package models;
 
-public record PlantModel(int index, String name, int baseMaxGrowthStage, int baseGrowthMultiplier){}
+public record PlantModel(String name, int baseMaxGrowthStage, int baseGrowthMultiplier){}

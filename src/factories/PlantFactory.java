@@ -6,8 +6,8 @@ import src.Plant;
 
 public abstract class PlantFactory {
 
-    public static Plant createPlantFromSeed(int index, Quality quality){
-        PlantModel templatePlant = PlantDatabase.plantModelMap.get(index);
+    public static Plant createPlantFromSeed(String name, Quality quality){
+        PlantModel templatePlant = Database.plantModelMap.getOrDefault(name, Database.plantModelMap.get("Dummy Plant"));
         return new Plant(templatePlant, quality);
 
     }
