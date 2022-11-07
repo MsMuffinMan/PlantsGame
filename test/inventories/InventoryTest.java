@@ -5,7 +5,6 @@ import enums.Quality;
 import enums.Rarity;
 import factories.ItemFactory;
 import factories.Database;
-import items.Item;
 import items.NormalItem;
 import org.junit.jupiter.api.*;
 import src.Player;

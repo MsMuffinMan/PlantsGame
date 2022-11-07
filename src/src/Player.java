@@ -2,7 +2,6 @@ package src;
 
 import enums.ItemTypes;
 import inventories.Inventory;
-import inventories.PlayerInventory;
 import items.NormalItem;
 import items.SeedItem;
 
@@ -15,7 +14,7 @@ public class Player implements PlayerActions {
 
     public Player(){
         name = "Test";
-        savings = BigDecimal.valueOf(100L);
+        savings = new BigDecimal("100");
     }
 
     public Inventory getPlayerInventory() {
@@ -31,7 +30,7 @@ public class Player implements PlayerActions {
     }
 
     public void dropItem(NormalItem itemToDrop) {
-
+        playerInventory.removeItem(itemToDrop);
     }
 
     public void plantSeed(SeedItem seed) {

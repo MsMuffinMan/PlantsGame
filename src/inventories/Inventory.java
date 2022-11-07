@@ -31,6 +31,34 @@ public class Inventory implements InventoryManager {
         }
     }
 
+    public void removeItem(NormalItem item){
+        ItemTypes type = item.getItemType();
+        if(masterInventory.get(type).containsKey(item)){
+            int currentAmount = masterInventory.get(type).get(item);
+            if(currentAmount == 1) {
+                masterInventory.get(type).remove(item);
+            } else {
+                masterInventory.get(type).replace(item, currentAmount - 1);
+            }
+        }
+    }
+
+    public void removeItemByStacksize(NormalItem item, int numberToRemove){
+        ItemTypes type = item.getItemType();
+        if(masterInventory.get(type).containsKey(item)){
+            int currentAmount = masterInventory.get(type).get(item);
+            if(currentAmount == 1) {
+                masterInventory.get(type).remove(item);
+            } else {
+                if(currentAmount - numberToRemove > 0) {
+                    masterInventory.get(type).replace(item, currentAmount - numberToRemove);
+                } else {
+                    masterInventory.get(type).remove(item);
+                }
+            }
+        }
+    }
+
     public void addItem2(NormalItem item){
         ItemTypes type = item.getItemType();
         int indexOfItem;
