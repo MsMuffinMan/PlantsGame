@@ -11,6 +11,9 @@ public abstract class Item {
     public ItemTypes getItemType(){
         return type;
     }
+    public String getName(){
+        return itemModel.name();
+    }
     public int getAmount(){
         return amount;
     }

@@ -2,8 +2,10 @@ package inventories;
 
 import enums.ItemTypes;
 import enums.Quality;
+import enums.Rarity;
 import factories.ItemFactory;
 import factories.Database;
+import items.Item;
 import items.NormalItem;
 import org.junit.jupiter.api.*;
 import src.Player;
@@ -52,11 +54,45 @@ class InventoryTest {
             NormalItem testFood = ItemFactory.createItem(ItemTypes.FOOD,"Carrot", Quality.NORMAL, 1);
             inv.addItem(testFood);
         }
-        System.out.println(inv.masterInventory.get(ItemTypes.SEED));
-        System.out.println(inv.masterInventory.get(ItemTypes.PLANT));
-        System.out.println(inv.masterInventory.get(ItemTypes.FOOD));
+//        System.out.println(inv.masterInventory.get(ItemTypes.SEED));
+//        System.out.println(inv.masterInventory.get(ItemTypes.PLANT));
+//        System.out.println(inv.masterInventory.get(ItemTypes.FOOD));
+    }
 
+    @Test
+    void addOneThousandItemsToList(){
+        for(int i = 0; i < 1000; i++) {
+            NormalItem testSeed = ItemFactory.createItem(ItemTypes.SEED,"Carrot", Quality.NORMAL,1);
+            inv.addItem2(testSeed);
+            NormalItem testPlant = ItemFactory.createItem(ItemTypes.PLANT,"Carrot", Quality.NORMAL,  1);
+            inv.addItem2(testPlant);
+            NormalItem testFood = ItemFactory.createItem(ItemTypes.FOOD,"Carrot", Quality.NORMAL, 1);
+            inv.addItem2(testFood);
+        }
 
+        for(ItemTypes type : inv.masterInventory2.keySet()){
+            System.out.println(type);
+            for(NormalItem items : inv.masterInventory2.get(type)){
+                System.out.println(items + " - " + items.getAmount());
+            }
+        }
+    }
+
+    @Test
+    void retrieveItemFromInventory(){
+        NormalItem carrotSeed = ItemFactory.createItem(ItemTypes.SEED, "Carrot", Quality.NORMAL, 1);
+        carrotSeed.setRarity(Rarity.COMMON);
+        int amountInInventory = inv.masterInventory.get(ItemTypes.SEED).get(carrotSeed);
+        System.out.println(amountInInventory);;
+    }
+
+    @Test
+    void retrieveItemFromListInventory(){
+        NormalItem carrotSeed = ItemFactory.createItem(ItemTypes.SEED, "Carrot", Quality.NORMAL, 1);
+        carrotSeed.setRarity(Rarity.COMMON);
+        int indexOfItem = inv.masterInventory2.get(ItemTypes.SEED).indexOf(carrotSeed);
+        int amount = inv.masterInventory2.get(ItemTypes.SEED).get(indexOfItem).getAmount();
+        System.out.println(amount);
     }
 
 }

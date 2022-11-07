@@ -24,6 +24,10 @@ public class NormalItem extends Item {
         this.quality = Quality.NORMAL;
     }
 
+    public void setRarity(Rarity rarity){
+        this.rarity = rarity;
+    }
+
 
     @Override
     public boolean equals(Object o) {
